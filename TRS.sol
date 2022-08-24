@@ -35,7 +35,7 @@ contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
     constructor (string memory _name, string memory _symbol, string memory tokenURI) {
         Trees = _name;
         TRS = _symbol;
-        tokenURI =_tokenId; //!
+       
     }
 
         function balanceOf(address owner) public view returns(uint) {
