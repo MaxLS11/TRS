@@ -21,9 +21,14 @@ contract Trees is IERC165, ERC725YCore, LSP4DigitalAssetMetadata, LSP8Identifiab
     }
     
     
+    function balanceOf(address tokenOwner) public view returns (uint256);
+        require(tokenOwner != address(0), "zero address");
+        return _balances[tokenOwner];
     
     
+    function tokenownerOf(uint tokenId) public view _requireMinted(tokenId) returns(address) {
+            return _owners[tokenId];
     
-    
-    
+    function transfer(address from, address to, bytes32 tokenId, bool force, bytes memory data
+    ) external;
 }
