@@ -17,7 +17,7 @@ contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
     using Strings for uint;
     uint public constant maxPurchase = 3;
     uint256 public constant MAX_TREES = 100;
-    uint256 private _treesPrice = 80000000000000000; //0.08 E
+    uint256 private _treesPrice = - 
     string private baseURI;
     bool public saleIsActive = true;
     string public _name;
@@ -32,7 +32,7 @@ contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
         require(_exists(tokenId),"not minted");
         _;
     }
-    constructor (string memory _name, string memory _symbol, string memory tokenURI) {
+    constructor (string memory _name, string memory _symbol) {
         Trees = _name;
         TRS = _symbol;
        
