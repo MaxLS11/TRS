@@ -18,7 +18,13 @@ contract Trees  is IERC165, IERC725Y, LSP4DigitalAssetMetadata, LSP8Identifiable
     }
 }
 
- constructor(string memory name_, string memory symbol_, address newOwner_) LSP4DigitalAssetMetadata(name_, symbol_, newOwner_) {}
+ constructor(string memory name_, string memory symbol_, address newOwner_) LSP4DigitalAssetMetadata(name_, symbol_, newOwner_) {
+ 
+ 
+ 
+ 
+ 
+ }
 
 
 
