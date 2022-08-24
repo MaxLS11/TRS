@@ -2,10 +2,10 @@
 pragma solidity ^0.8.0;
 
 
-import {IERC165} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
-import {LSP8IdentifiableDigitalAssetCore} from "@Lukso/LSP8IdentifiableDigitalAssetCore.sol";
-import {LSP4DigitalAssetMetadata} from "@Lukso/LSP4DigitalAssetMetadata/LSP4DigitalAssetMetadata.sol";
-import {IERC725Y} from "@erc725/smart-contracts/contracts/interfaces/IERC725Y.sol";
+import from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+import from "@Lukso/LSP8IdentifiableDigitalAssetCore.sol";
+import from "@Lukso/LSP4DigitalAssetMetadata/LSP4DigitalAssetMetadata.sol";
+import from "@erc725/smart-contracts/contracts/interfaces/IERC725Y.sol";
 
 
 contract Trees  is IERC165, IERC725Y, LSP4DigitalAssetMetadata, LSP8IdentifiableDigitalAssetCore{
