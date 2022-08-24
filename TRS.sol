@@ -89,7 +89,7 @@ contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
         _owners[tokenId] = to;
 
         emit Transfer(from, to, tokenId);
-        _afterTokenTransfer(from, to, tokenId);   //?
+        _afterTokenTransfer(from, to, tokenId);   //!
     }
         function _beforeTokenTransfer(address from, address to, uint tokenId) internal override(ERC721, ERC721Enumerable) {
                 super._beforeTokenTransfer(from, to, tokenId);
@@ -144,7 +144,7 @@ contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
             string memory baseURI; //ipfs:
             return bytes(baseURI).length > 0 ?
             string(abi.encodePacked(baseURI, tokenId.toString())) :
-            ""; //?
+            ""; //!
     }
 
         constructor(string memory baseURI) ERC721("The Trees NFT", "TRS") {
