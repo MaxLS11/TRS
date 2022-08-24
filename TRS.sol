@@ -56,8 +56,7 @@ contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
             _transfer(from, to, tokenId);
             require(_checkOnERC721Received(from, to, tokenId), "non erc721 receiver");
     }
-
-    //funkcia bezopasniy perevod.
+    
     function _checkOnERC721Received(address from, address to, uint tokenId) private returns(bool) {
         if(to.code.length > 0) {
             try IERC721Receiver(to).onERC721Received(msg.sender, from, tokenId, bytes("")) returns(bytes4 ret) {
@@ -77,7 +76,6 @@ contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
         }
     }
     
-
     function _transfer(address from,address to, uint tokenId) internal {
         require(ownerOf(tokenId) == from, "not an owner!");
         require(to != address(0),"to cannot be zero!");
@@ -93,7 +91,6 @@ contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
                 super._beforeTokenTransfer(from, to, tokenId);
     } 
         function _afterTokenTransfer(address from, address to, uint tokenId) internal virtual {} 
-
 
         function supportsInterface(bytes4 interfaceId)public view override(ERC721, ERC721Enumerable)returns (bool) {
             return interfaceId == type(IERC721).interfaceId ||
@@ -137,12 +134,11 @@ contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
             require(_chekOnERC721Received(msg.sender, to, tokenId),"non ERC721 receiver!");
     }
     
-
         function tokenURI(uint tokenId) public _requireMinted(tokenId) view returns(string memory) {
             string memory baseURI; //ipfs:
             return bytes(baseURI).length > 0 ?
             string(abi.encodePacked(baseURI, tokenId.toString())) :
-            ""; //!
+            "";
     }
 
         constructor(string memory baseURI) ERC721("The Trees NFT", "TRS") {
