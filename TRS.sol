@@ -162,8 +162,6 @@ contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
             uint256 tokenId;
     }
     
-
-
 }
 
 // Woou. 
