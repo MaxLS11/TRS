@@ -4,13 +4,13 @@ pragma solidity ^0.8.0;
 
 import {IERC165} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        virtual
-        override(IERC165, ERC725YCore)
+
+
+contract Trees  LSP4DigitalAssetMetadata, LSP8IdentifiableDigitalAssetCore{
+    function supportsInterface(bytes4 interfaceId)public view virtual override(IERC165, ERC725YCore)
         returns (bool)
     {
         return interfaceId == _INTERFACEID_LSP8 || super.supportsInterface(interfaceId);
     }
+}
 }
