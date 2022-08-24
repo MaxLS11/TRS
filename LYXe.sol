@@ -13,15 +13,12 @@ contract Trees  is IERC165, IERC725Y, LSP4DigitalAssetMetadata, LSP8Identifiable
     function supportsInterface(bytes4 interfaceId)public view virtual override(IERC165, ERC725YCore)
         returns (bool)
     {
-        return interfaceId == _INTERFACEID_LSP8 || super.supportsInterface(interfaceId);
+        return interfaceId == _INTERFACEID_LSP8 || 
+        super.supportsInterface(interfaceId);
     }
 }
 
-
- constructor(string memory name_,
-        string memory symbol_,
-        address newOwner_
-    ) LSP4DigitalAssetMetadata(name_, symbol_, newOwner_) {}
+ constructor(string memory name_, string memory symbol_, address newOwner_) LSP4DigitalAssetMetadata(name_, symbol_, newOwner_) {}
 
 
 
