@@ -21,7 +21,6 @@ contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
     bool public saleIsActive = true;
     string public _name;
     string public _symbol; 
-    string public totalSupply;
     string public  _tokenId;
     bool public saleIsActive = true;
     string public baseTokenURI;
