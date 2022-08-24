@@ -17,7 +17,8 @@ contract Trees is IERC165, ERC725YCore, LSP4DigitalAssetMetadata, LSP8Identifiab
 
     function supportsInterface(bytes4 interfaceId)public view virtual override(IERC165, ERC725YCore)returns (bool)
     {
-        return interfaceId == _INTERFACEID_LSP8 || super.supportsInterface(interfaceId);
+        return interfaceId == _INTERFACEID_LSP8 || 
+        super.supportsInterface(interfaceId);
     }
     
     
@@ -28,7 +29,15 @@ contract Trees is IERC165, ERC725YCore, LSP4DigitalAssetMetadata, LSP8Identifiab
     
     function tokenownerOf(uint tokenId) public view _requireMinted(tokenId) returns(address) {
             return _owners[tokenId];
+       
     
-    function transfer(address from, address to, bytes32 tokenId, bool force, bytes memory data
-    ) external;
-}
+    function transfer(address from, address to, bytes32 tokenId, bool force, bytes memory data) external;
+
+
+    function tokenIdsOf(address tokenOwner) external view returns (bytes32[] memory);
+
+
+
+ function transferFrom(address from, address to, uint tokenId) external {
+            require (_isApprovedOrOwner(msg.sender, tokenId), "not an owner or approved!");
+            _transfer(from, to, tokenId);
