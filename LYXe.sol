@@ -16,7 +16,7 @@ contract Trees is IERC165, ERC725YCore, LSP4DigitalAssetMetadata, LSP8Identifiab
     
     } 
 
-    function supportsInterface(bytes4 interfaceId)public view virtual override(IERC165, ERC725YCore)returns (bool){
+    function supportsInterface(bytes4 interfaceId) public view virtual override(IERC165, ERC725YCore)returns (bool){
         return interfaceId == _INTERFACEID_LSP8 || 
         super.supportsInterface(interfaceId);
     }
