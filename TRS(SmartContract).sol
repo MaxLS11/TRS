@@ -151,9 +151,7 @@ contract Trees is ERC721, IERC165, IERC721Enumerable, IERC721Metadata, Ownable {
         function _setTokenURI(uint256 tokenId, string _tokenURI) {
             require tokenId;
     }
-        function tokenOfOwnerByIndex(address owner, uint256 index) external {
-            uint256 tokenId;
-    }
+
     
 }
 
