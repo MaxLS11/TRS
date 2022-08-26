@@ -142,14 +142,10 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
             return setBaseURI(baseURI);
     }
         function _baseURI() internal pure virtual override returns (string memory) {
-            return baseTokenURI; //!
+            return baseTokenURI;
     }
         function _setBaseURI(string memory baseTokenURI) public onlyOwner {
-            baseTokenURI = _baseTokenURI; // BaseTokenURI = newBaseURI;
-    }
-
-       // function _setTokenURI(uint256 tokenId, string _tokenURI) {
-        //    require tokenId;
+            baseTokenURI = _baseTokenURI;
     }
 
     
