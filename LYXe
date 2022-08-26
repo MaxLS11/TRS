@@ -7,7 +7,7 @@ import "@erc725/smart-contracts/contracts/interfaces/IERC725Y.sol";
 import "./LSP8IdentifiableDigitalAssetCore.sol";
 import "../LSP4DigitalAssetMetadata/LSP4DigitalAssetMetadata.sol";
 
-import "./LSP8Constants.sol";
+import "@lukso/lsp-smart-contracts/constants.js";
 
 contract Trees is IERC165, ERC725YCore, LSP4DigitalAssetMetadata, LSP8IdentifiableDigitalAssetCore {
 
