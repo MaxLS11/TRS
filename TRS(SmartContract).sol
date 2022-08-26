@@ -131,7 +131,7 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
     }
     
         function tokenURI(uint256 tokenId) public _requireMinted(tokenId) view returns(string memory) {
-            string memory baseURI; //ipfs:
+            string memory baseURI = _baseURI;
             return bytes(baseURI).length > 0 ?
             string(abi.encodePacked(baseURI, tokenId.toString())) :
             "";
