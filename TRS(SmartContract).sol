@@ -27,7 +27,7 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
         require(_exists(tokenId),"not minted");
         _;
     }
-    constructor (string memory _name, string memory _symbol, string memory _baseURI) {
+    constructor (string memory _name, string memory _symbol) {
         Trees = _name;
         TRS = _symbol;
         setBaseURI(baseURI);
