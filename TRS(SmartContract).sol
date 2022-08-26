@@ -3,12 +3,13 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol.";
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
-contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, Ownable {
+contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721Receiver, Ownable {
     
     using Strings for uint;
     uint public constant maxPurchase = 3;
