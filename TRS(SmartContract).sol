@@ -22,8 +22,8 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
     string public  _tokenId;
     bool public saleIsActive = true;
     string public baseTokenURI;
-    mapping(address => uint) _balances;
-    mapping(uint => address) _owners;
+    mapping(address => uint256) _balances;
+    mapping(uint256 => address) _owners;
     modifier _requireMinted(uint tokenId) {
         require(_exists(tokenId),"not minted");
         _;
@@ -34,7 +34,7 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
        
     }
 
-        function balanceOf(address owner) public view returns(uint) {
+        function balanceOf(address owner) public view returns(uint256) {
             require(owner != address(0), "zero address");
             return _balances[owner];
     }
@@ -46,16 +46,16 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
             require(_isApprovedOrOwner(msg.sender,tokenId),"not an owner or approved!"); //!public 
             _safeTransfer(from, to, tokenId);
     }
-        function transferFrom(address from, address to, uint tokenId) external {
+        function transferFrom(address from, address to, uint256 tokenId) external {
             require (_isApprovedOrOwner(msg.sender, tokenId), "not an owner or approved!");
             _transfer(from, to, tokenId);
     } 
-        function _safeTransfer(address from, address to, uint tokenid) internal {
+        function _safeTransfer(address from, address to, uint256 tokenid) internal {
             _transfer(from, to, tokenId);
             require(_checkOnERC721Received(from, to, tokenId), "non erc721 receiver");
     }
     
-    function _checkOnERC721Received(address from, address to, uint tokenId) private returns(bool) {
+    function _checkOnERC721Received(address from, address to, uint256 tokenId) private returns(bool) {
         if(to.code.length > 0) {
             try IERC721Receiver(to).onERC721Received(msg.sender, from, tokenId, bytes("")) returns(bytes4 ret) {
                 return ret == IERC721Receiver.onERC721Received.selector;
@@ -74,7 +74,7 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
         }
     }
     
-    function _transfer(address from,address to, uint tokenId) internal {
+    function _transfer(address from,address to, uint256 tokenId) internal {
         require(ownerOf(tokenId) == from, "not an owner!");
         require(to != address(0),"to cannot be zero!");
         _beforeTokenTransfer(from, to, tokenId);
@@ -85,10 +85,10 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
         emit Transfer(from, to, tokenId);
         _afterTokenTransfer(from, to, tokenId);   //!
     }
-        function _beforeTokenTransfer(address from, address to, uint tokenId) internal override(ERC721, ERC721Enumerable) {
+        function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal override(ERC721, ERC721Enumerable) {
                 super._beforeTokenTransfer(from, to, tokenId);
     } 
-        function _afterTokenTransfer(address from, address to, uint tokenId) internal virtual {} 
+        function _afterTokenTransfer(address from, address to, uint256 tokenId) internal virtual {} 
 
         function supportsInterface(bytes4 interfaceId)public view override(ERC721, ERC721Enumerable)returns (bool) {
             return interfaceId == type(IERC721).interfaceId ||
@@ -101,15 +101,15 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
             return _treesPrice;
     }
         function withdraw() public payable onlyOwner {
-            uint balance = address(this).balance;
+            uint256 balance = address(this).balance;
             require(balance > 0, "No ether left to withdraw");
             (bool success, ) = (msg.sender).call{value: balance}("");
             require(success, "Transfer failed.");
     }
-        function _exists(uint tokenId) internal view returns(bool) {
+        function _exists(uint256 tokenId) internal view returns(bool) {
             return _owners[tokenId] != address(0); //proverka vvoda v oborot(est token or no)
         }
-        function _mintTrees(address to, uint tokenId) public virtual payable {
+        function _mintTrees(address to, uint256 tokenId) public virtual payable {
             require(to != address(0), "to cannot be zero"); 
             require(!_exists(tokenId), "already exists!");
             _owners[tokenId] = to;
@@ -127,12 +127,12 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
         }
     }
 
-        function _safeMint(address to,uint tokenId) internal virtual {
+        function _safeMint(address to,uint256 tokenId) internal virtual {
             _mint(to, tokenId);
             require(_chekOnERC721Received(msg.sender, to, tokenId),"non ERC721 receiver!");
     }
     
-        function tokenURI(uint tokenId) public _requireMinted(tokenId) view returns(string memory) {
+        function tokenURI(uint256 tokenId) public _requireMinted(tokenId) view returns(string memory) {
             string memory baseURI; //ipfs:
             return bytes(baseURI).length > 0 ?
             string(abi.encodePacked(baseURI, tokenId.toString())) :
