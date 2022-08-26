@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721Receiver, Ownable {
     
-    using Strings for uint;
+    using Strings for uint256;
     uint public constant maxPurchase = 3;
     uint256 public constant MAX_TREES = 100;
     //uint256 private _treesPrice = - 
@@ -24,7 +24,7 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
     string public baseTokenURI;
     mapping(address => uint256) _balances;
     mapping(uint256 => address) _owners;
-    modifier _requireMinted(uint tokenId) {
+    modifier _requireMinted(uint256 tokenId) {
         require(_exists(tokenId),"not minted");
         _;
     }
