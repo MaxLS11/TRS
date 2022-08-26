@@ -19,7 +19,6 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
     bool public saleIsActive = true;
     string public _name;
     string public _symbol; 
-    string public  _tokenId;
     bool public saleIsActive = true;
     string public baseTokenURI;
     mapping(address => uint256) _balances;
@@ -28,10 +27,10 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
         require(_exists(tokenId),"not minted");
         _;
     }
-    constructor (string memory _name, string memory _symbol) {
+    constructor (string memory _name, string memory _symbol, string memory _baseURI) {
         Trees = _name;
         TRS = _symbol;
-       
+        setBaseURI(baseURI);
     }
 
         function balanceOf(address owner) public view returns(uint256) {
