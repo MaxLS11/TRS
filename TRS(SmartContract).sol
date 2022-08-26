@@ -138,17 +138,9 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
             "";
     }
 
-        constructor(string memory baseURI) ERC721("The Trees NFT", "TRS") {
-            return setBaseURI(baseURI);
-    }
-
        function _baseURI() internal pure virtual override returns (string memory) {
            return baseTokenURI;
     }
-
-       function _baseURI() internal  view  virtual  override returns (string memory) {
-           return baseTokenURI;
-}
 
        function setBaseURI(string memory _baseTokenURI) public onlyOwner {
            baseTokenURI = _baseTokenURI;
