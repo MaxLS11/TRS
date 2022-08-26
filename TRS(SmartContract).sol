@@ -94,7 +94,7 @@ contract Trees is ERC721, IERC165, IERC721Enumerable, IERC721Metadata, Ownable {
             super.supportsInterface(interfaceId);
     }
         function setPrice(uint256 _newPrice) public onlyOwner() {
-            _trssePrice = _newPrice;
+            _treesPrice = _newPrice;
     }
         function getPrice() public view returns (uint256){
             return _treesPrice;
