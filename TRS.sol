@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
-contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, Ownable {
+contract Trees is ERC721, IERC721Enumerable, IERC721Metadata, IERC165, Ownable {
     
     using Strings for uint;
     uint public constant maxPurchase = 3;
