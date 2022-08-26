@@ -148,8 +148,8 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, Ownable 
             baseTokenURI = _baseTokenURI; // BaseTokenURI = newBaseURI;
     }
 
-        function _setTokenURI(uint256 tokenId, string _tokenURI) {
-            require tokenId;
+       // function _setTokenURI(uint256 tokenId, string _tokenURI) {
+        //    require tokenId;
     }
 
     
