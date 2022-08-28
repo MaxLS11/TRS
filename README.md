@@ -11,4 +11,4 @@ Currently, our smart contract is being tested, and executed in the "Solidity" pr
 
 The project plans to implement an innovation in the field of "staking with NFT help".  Making it easier for users to access staking with the power of Web3 technologies.  To participate in LYXe staking, it is enough to keep this NFT, immobilized, on your wallet. Our project consists of three team members, an Artist, a Graphic Designer, and 1 Developer.
 
-Due to the growing environmental problems and CO2 emissions, POW class networks, we decided to implement this project on the Lukso eco-friendly blockchain.  And we chose a theme for our NFTs with images of rare and endangered tree species.
+Due to growing environmental concerns and CO2 emissions from manufacturing, POW networks, we have chosen a theme for our NFTs with images of 100 individual trees to draw attention to the environmental and ecological impact.
