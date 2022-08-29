@@ -17,7 +17,7 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
     uint256 public _treesPrice = - 
     string public _name;
     string public _symbol; 
-    string public baseTokenURI;
+    string public baseURI;
     mapping(address => uint256) _balances;
     mapping(uint256 => address) _owners;
     modifier _requireMinted(uint256 tokenId) {
