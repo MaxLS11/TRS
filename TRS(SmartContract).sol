@@ -49,15 +49,15 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
         isApproveForAll(owner, spender); 
      }
 
-    function OwnerOf(uint tokenId) public _requireMinted(TokenId) returns (address) {
+    function OwnerOf(uint tokenId) public _requireMinted(tokenId) returns (address) {
         return _owners[tokenId];
 
-    //unction isApprovedForAll(address owner) public view returns (bool) {
-        //return _tokenApprovals[owner];
-    //}
+    function isApprovedForAll(address owner) public view returns (bool) {
+        return _tokenApprovals[owner];
+    }
  
     }
-        function _safeTransfer(address from, address to, uint256 tokenid) internal {
+        function _safeTransfer(address from, address to, uint256 tokenId) internal {
             _transfer(from, to, tokenId);
             require(_checkOnERC721Received(from, to, tokenId), "non erc721 receiver");
     }
@@ -65,7 +65,6 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
         return _tokenApprovals(tokenId);
     }
 
-    
     function _checkOnERC721Received(address from, address to, uint256 tokenId) private returns(bool) {
         if(to.code.length > 0) {
             try IERC721Receiver(to).onERC721Received(msg.sender, from, tokenId, bytes("")) returns(bytes4 ret) {
@@ -85,8 +84,6 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
         }
     }
     
-
-
     function _transfer(address from,address to, uint tokenId) internal {
         require(ownerOf(tokenId) == from, "not an owner!");
         require(to != address(0),"to cannot be zero!");
@@ -107,12 +104,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
             return interfaceId == type(IERC721).interfaceId ||
             super.supportsInterface(interfaceId);
     }
-        function setPrice(uint256 _newPrice) public onlyOwner() {
-            _treesPrice = _newPrice;
-    }
-        function getPrice() public view returns (uint256){
-            return _treesPrice;
-    }
+        
         function withdraw() public payable onlyOwner {
             uint256 balance = address(this).balance;
             require(balance > 0, "No ether left to withdraw");
@@ -154,13 +146,11 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
            return "";
     }
         
-       }
-
        function tokenURI(uint tokenId ) public _requireMinted(tokenId) view returns(string memory) {
 
            string memory baseURI = _baseURI();
            return bytes(baseURI).length > 0 ?
-           strung(abi.encodePacked(baseURI, tokenId.toString))) :
+           strung(abi.encodePacked(baseURI, tokenId.toString)) :
            "";
        }
 
