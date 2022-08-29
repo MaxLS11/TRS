@@ -10,19 +10,11 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, Ownable {
-    
     using Strings for uint256;
+    string public baseURI;
     uint public constant maxPurchase = 3;
     uint256 public constant MAX_TREES = 100;
-    uint256 public _treesPrice = - 
-    string public _name;
-    string public _symbol; 
-    string public baseURI;
-    mapping(address => uint256) _balances;
-    mapping(uint256 => address) _owners;
-    modifier _requireMinted(uint256 tokenId) {
-        require(_exists(tokenId),"not minted");
-        _;
+    
     }
     constructor (string memory _name, string memory _symbol, string memory baseURI) {
         Trees = _name;
@@ -105,28 +97,10 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, Ownable 
         function _exists(uint256 tokenId) internal view returns(bool) {
             return _owners[tokenId] != address(0); //proverka vvoda v oborot(est token or no)
         }
-        function _mintTrees(address to, uint256 tokenId) public virtual payable {
-            require(to != address(0), "to cannot be zero"); 
-            require(!_exists(tokenId), "already exists!");
-            _owners[tokenId] = to;
-            _balances[to]++;
-            require(saleIsActive, "Sale must be active to mint Trees");
-            require(numberOfTokens <= maxPurchase, "Can only mint 3 tokens at a time");
-            require(totalSupply().add(numberOfTokens) <= MAX_TREES, "Purchase would exceed max supply of Trees");
-            require(_treesPrice.mul(numberOfTokens) <= msg.value, "Ether value sent is not correct");
-            for(uint i = 0; i < numberOfTokens, i++) {
-            uint mintIndex = totalSupply();
-            if (totalSupply() < MAX_TREES) {
-                _safeMint(msg.sender, mintIndex);
-                emit _mintTrees(msg.sender,_tokenId;)
-            }
+       
         }
     }
 
-        function _safeMint(address to,uint256 tokenId) internal virtual {
-            _mint(to, tokenId);
-            require(_chekOnERC721Received(msg.sender, to, tokenId),"non ERC721 receiver!");
-    }
     
         function tokenURI(uint256 tokenId) public _requireMinted(tokenId) view returns(string memory) {
             string memory baseURI = _baseURI;
