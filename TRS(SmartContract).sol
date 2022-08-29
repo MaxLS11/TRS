@@ -18,7 +18,6 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
     bool public saleIsActive = true;
     string public _name;
     string public _symbol; 
-    bool public saleIsActive = true;
     string public baseTokenURI;
     mapping(address => uint256) _balances;
     mapping(uint256 => address) _owners;
