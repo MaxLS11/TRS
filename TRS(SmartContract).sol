@@ -25,8 +25,8 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
        }
 
     constructor (string memory _name, string memory _symbol) IERC721(_name, _symbol) {
-        name = _name;
-        symbol = _symbol;
+        _name = _name;
+        _symbol = _symbol;
     }
 
         function balanceOf(address owner) public view returns(uint256) {
@@ -43,17 +43,17 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
             _transfer(from, to, tokenId);
     } 
 
-     function _isApprovedOrOwner(address spender, uint tokenId) internal view returns (bool){
-        address owner = ownerOf(tokenId);
-        require(spender == owner) ||
-        isApproveForAll(owner, spender); 
+        function _isApprovedOrOwner(address spender, uint tokenId) internal view returns (bool){
+            address owner = OwnerOf(tokenId);
+            require(spender == owner) ||
+            isApproveForAll[owner]; 
      }
 
-    function OwnerOf(uint tokenId) public _requireMinted(tokenId) returns (address) {
-        return _owners[tokenId];
+        function OwnerOf(uint tokenId) public _requireMinted(tokenId) returns (address) {
+            return _owners[tokenId];
 
-    function isApprovedForAll(address owner) public view returns (bool) {
-        return _tokenApprovals[owner];
+        function isApprovedForAll(address owner) public view returns (bool) {
+            return _tokenApprovals(owner, spender);
     }
  
     }
@@ -85,7 +85,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
     }
     
     function _transfer(address from,address to, uint tokenId) internal {
-        require(ownerOf(tokenId) == from, "not an owner!");
+        require(OwnerOf(tokenId) == from, "not an owner!");
         require(to != address(0),"to cannot be zero!");
         _beforeTokenTransfer(from, to, tokenId);
         _balances[from]--;
@@ -116,7 +116,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
             }
 
         function approve(address to, uint tokenId) public {
-            address _owner = ownerOf(tokenId);
+            address _owner = OwnerOf(tokenId);
             require(_owner == msg.sender || isApprovedForAll(_owner,msg.sender), "not an owner");
             require(to != _owner, "cannot approve to self");
             _tokenApprovals[tokenId] = to;
@@ -126,19 +126,19 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
     function burn(uint tokenId) public virtual {
 
         require(_isApprovedOrOwner(msg.sender, tokenId), "not an owner");
-        address owner = ownerOf[tokenId];
+        address owner = OwnerOf[tokenId];
         _balances[owner]--;
         delete _owners[tokenId];
     }
     function _mint(address to, uint tokenId) internal virtual {
         require( to != address(0), "to canndo be zero");
         require(!_exists(tokenId), "already exists" );
-        _owner[tokenId] = to;
+        owner[tokenId] = to;
         _balances[to]++;
     }
        function _safeMint(address to,uint tokenId) internal virtual {
            _mint(to, tokenId);
-           require (_checkOnOnERC721Received(msg.sender, to, tokenId), "non ERC721 receiver!");
+           require (_checkOnERC721Received(msg.sender, to, tokenId), "non ERC721 receiver!");
        }
 
 
@@ -150,7 +150,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
 
            string memory baseURI = _baseURI();
            return bytes(baseURI).length > 0 ?
-           strung(abi.encodePacked(baseURI, tokenId.toString)) :
+           string(abi.encodePacked(baseURI, tokenId.toString)) :
            "";
        }
 
