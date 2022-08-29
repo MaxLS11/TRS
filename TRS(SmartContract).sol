@@ -15,7 +15,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
         mapping(uint => address) _owners;
         mapping(address => uint) _balances;
         mapping(uint => address) _tokenApprovals;
-        string public baseURI;
+        
 
         modifier _requireMinted(uint256 tokenId) {
         require(_exists(tokenId),"not minted");
@@ -51,7 +51,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
             return _owners[tokenId];
 
         function isApprovedForAll(address owner) public view returns (bool) {
-            return _tokenApprovals(owner, spender);
+            return _tokenApprovals(owner);
     }
  
     }
