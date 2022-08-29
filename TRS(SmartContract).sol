@@ -15,7 +15,6 @@ contract Trees is IERC721, IERC165, IERC721Enumerable, IERC721Metadata, IERC721R
     uint public constant maxPurchase = 3;
     uint256 public constant MAX_TREES = 100;
     uint256 public _treesPrice = - 
-    bool public saleIsActive = true;
     string public _name;
     string public _symbol; 
     string public baseTokenURI;
