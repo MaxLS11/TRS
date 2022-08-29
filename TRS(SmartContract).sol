@@ -12,8 +12,6 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
     contract Trees is IERC721, ERC165, IERC721Enumerable, IERC721Metadata, Ownable {
 
         using Strings for uint;
-        uint public constant maxPurchase = 3;
-        uint256 public constant MAX_TREES = 100;
         mapping(uint => address) _owners;
         mapping(address => uint) _balances;
         mapping(uint => address) _tokenApprovals;
