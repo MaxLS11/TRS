@@ -1,7 +1,4 @@
-
-
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -17,13 +14,13 @@ contract TheTreesNFT is ERC721, Ownable {
     uint256 public maxSupply = 100;
     uint256 public price = 8;  //exemple
     uint256 public  Amount = 3;
-    string  public baseTokenURI;
+    string  baseURI;
     mapping (uint => address) _owners;
     mapping (address => uint256[]) nftOwner;
     mapping(address => uint) _balances;
     uint256[] soldedTokenIds;
     bool public saleIsActive = true;
-
+    
     event _mint(address senderAddress, uint256 nftToken);
 
     constructor(string memory Trees, string memory TRS) ERC721("Trees", "TRS") {
