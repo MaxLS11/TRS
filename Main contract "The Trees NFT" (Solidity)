@@ -15,12 +15,15 @@ contract TheTreesNFT is ERC721Enumerable, Ownable {
   uint256 public maxSupply = 100;
   uint256 public cost = 8 LYXe;  //exemple
   uint256 public maxMintAmount = 3;
-  
-   constructor(string memory Trees, string memory TRS) ERC721("Trees", "TRS") {
+  string baseURI;
+
+    constructor(string memory Trees, string memory TRS) ERC721("Trees", "TRS") {
    
 
   }
   
+      function _baseURI() internal view virtual override returns (string memory) {
+          return baseURI;
   
   
   
