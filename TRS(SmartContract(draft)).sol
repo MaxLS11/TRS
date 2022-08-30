@@ -23,8 +23,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
        }
 
     constructor (string memory _name, string memory _symbol) IERC721(_name, _symbol) {
-        _name = _name;
-        _symbol = _symbol;
+
     }
 
         function balanceOf(address owner) public view returns(uint256) {
