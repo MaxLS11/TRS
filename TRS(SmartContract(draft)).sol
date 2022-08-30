@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
 
-    contract Trees is IERC721, ERC165, IERC721Enumerable, Ownable {
+    contract Trees is IERC721, ERC165, , Ownable {
 
         using Strings for uint;
         mapping(uint => address) _owners;
