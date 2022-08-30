@@ -14,6 +14,14 @@ contract Trees is ERC721Enumerable, Ownable {
   using Strings for uint256;
   uint256 public maxSupply = 100;
   uint256 public maxMintAmount = 3;
-  uint256 public cost = 8 LYXe;
+  uint256 public cost = 8 LYXe;  //exemple
+  
+  
+  
+  
+  
+  
+  
+  }
 
 
