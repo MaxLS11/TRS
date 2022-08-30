@@ -19,8 +19,7 @@ contract TheTreesNFT is ERC721Enumerable, Ownable {
 
 
     constructor(string memory Trees, string memory TRS) ERC721("Trees", "TRS") {
-   
-
+  
   }
   
     function _baseURI() internal view virtual override returns (string memory) {
