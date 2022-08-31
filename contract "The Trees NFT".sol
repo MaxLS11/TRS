@@ -26,7 +26,7 @@ contract TheTreesNFT is ERC721, Ownable {
     constructor(string memory Trees, string memory TRS) ERC721("Trees", "TRS") {
         setBaseURI(baseURI);
   
-  }
+    }
   
     function _baseURI() internal view virtual override returns (string memory) {
         return baseTokenURI; 
@@ -34,11 +34,14 @@ contract TheTreesNFT is ERC721, Ownable {
 
     function setBaseURI(string memory _baseTokenURI) public onlyOwner {
         baseTokenURI = _baseTokenURI;
-
+    
+    }
+    
     function balanceOf(address owner) public view returns(uint256) {
         require(owner != address(0), "zero address");
         return _balances[owner];
     }
+    
     function withdraw() public payable onlyOwner {
         uint256 balance = address(this).balance;
         require(balance > 0, "No ether left to withdraw");
