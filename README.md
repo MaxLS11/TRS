@@ -18,3 +18,7 @@ The Trees NFT is planned to be implemented as decentralized as possible.
 ECONOMIC Model "THE TREES NFT":
 
 From an economic point of view, NFTs are planned to be backed by a special Lukso blockchain node, the profits from which will be distributed to holders for as long as the blockchain exists.
+
+Our video presentation:
+
+https://youtube.com/shorts/rCqpxBue5EA?feature=share
