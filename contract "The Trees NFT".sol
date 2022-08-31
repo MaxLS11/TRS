@@ -18,7 +18,7 @@ contract TheTreesNFT is ERC721, Ownable {
     mapping (address => uint256[]) nftOwner;
     mapping(address => uint) _balances;
     uint256[] soldedTokenIds;
-    uint256 public price = 8 LYXe;
+    uint256 public _treesPrice = 8 LYXe;
     bool public saleIsActive = true;
     
     event _mint(address senderAddress, uint256 TreesNFT);
@@ -89,7 +89,7 @@ contract TheTreesNFT is ERC721, Ownable {
         }
     }      
 
-}
+
     function _safeMint(address to,uint256 tokenId) internal virtual {
             _mint(to, tokenId);
             require(_checkOnERC721Received(msg.sender, to, tokenId),"non ERC721 receiver!");
@@ -135,5 +135,4 @@ contract TheTreesNFT is ERC721, Ownable {
     }
 
    
-
 }
