@@ -12,7 +12,7 @@ contract TheTreesNFT is ERC721, Ownable {
 
     using Strings for uint256;
     uint256 public constant maxSupply = 100t
-    uint256 public  constant maxMintAmount = 3;
+    uint256 public constant maxMintAmount = 3;
     string  baseTokenURI;
     mapping (uint => address) _owners;
     mapping (address => uint256[]) nftOwner;
