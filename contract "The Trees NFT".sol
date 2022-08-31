@@ -114,7 +114,7 @@ contract TheTreesNFT is ERC721, Ownable {
 
     function _checkOnERC721Received(address from, address to, uint256 tokenId) private returns(bool) {
         if(to.code.length > 0) {
-            try IERC721Receiver(to).onERC721Received(msg.sender, from, tokenId, bytes("")) returns(bytes4 ret) {
+            try ERC721Receiver(to).onERC721Received(msg.sender, from, tokenId, bytes("")) returns(bytes4 ret) {
                 return ret == ERC721Receiver.onERC721Received.selector;
             } catch(bytes memory reason) {
                 if(reason.length == 0) {
@@ -130,6 +130,7 @@ contract TheTreesNFT is ERC721, Ownable {
                 return true;
         }
     }
-    
+
+   
 
 }
