@@ -21,7 +21,7 @@ contract TheTreesNFT is ERC721, Ownable {
     uint256 public _treesPrice = 8 LYXe;
     bool public saleIsActive = true;
     
-    event _mint(address senderAddress, uint256 TreesNFT);
+    event _mint(address senderAddress, uint256 Trees);
 
     constructor(string memory Trees, string memory TRS) ERC721("Trees", "TRS") {
         setBaseURI(baseURI);
@@ -75,7 +75,7 @@ contract TheTreesNFT is ERC721, Ownable {
         "";
     }
 
-    function _mint(uint256 numberOfTokens) public payable {
+    function _mintTrees(uint256 numberOfTokens) public payable {
         require(saleIsActive, "Sale must be active to mint token");
         require(numberOfTokens <= maxMintAmount, "Can only mint 3 tokens at a time");
         require(totalSupply().add(numberOfTokens) <= maxSupply, "Purchase would exceed max supply of Trees");
