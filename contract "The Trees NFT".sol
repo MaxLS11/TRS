@@ -11,8 +11,8 @@ import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 contract TheTreesNFT is ERC721, Ownable {
 
     using Strings for uint256;
-    uint256 public constant maxSupply = 100;
-    uint256 public  constant Amount = 3;
+    uint256 public constant maxSupply = 100t
+    uint256 public  constant maxMintAmount = 3;
     string  baseTokenURI;
     mapping (uint => address) _owners;
     mapping (address => uint256[]) nftOwner;
@@ -77,7 +77,7 @@ contract TheTreesNFT is ERC721, Ownable {
 
     function _mint(uint256 numberOfTokens) public payable {
         require(saleIsActive, "Sale must be active to mint token");
-        require(numberOfTokens <= Amount, "Can only mint 3 tokens at a time");
+        require(numberOfTokens <= maxMintAmount, "Can only mint 3 tokens at a time");
         require(totalSupply().add(numberOfTokens) <= maxSupply, "Purchase would exceed max supply of Trees");
         require(_treesPrice.mul(numberOfTokens) <= msg.value, "LYXe value sent is not correct");
         
