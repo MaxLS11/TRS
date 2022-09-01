@@ -21,8 +21,8 @@ contract Trees is ILSP8IdentifiableDigitalAsset {
         using Strings for uint256;
         mapping(bytes32 => address) internal _tokenOwners;
 
-    constructor(string memory name_, string memory symbol_, address newOwner_) ERC725Y(newOwner_) {
-        require(newOwner_ != address(0), "LSP4: new owner cannot be the zero address");
+    constructor(string memory name_, string memory symbol) ERC725Y() {
+       
     }
 
     function totalSupply() public view override returns (uint256) {
