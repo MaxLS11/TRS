@@ -53,7 +53,19 @@ contract Trees is ILSP8IdentifiableDigitalAsset {
         if (from == to) {
             revert LSP8CannotSendToSelf();
         }
+
+        address tokenOwner = tokenOwnerOf(tokenId);
+        if (tokenOwner != from) {
+            revert LSP8NotTokenOwner(tokenOwner, tokenId, from);
+        }
+
+        if (to == address(0)) {
+            revert LSP8CannotSendToAddressZero();
+        }
     }
+    
+    
+    
 
     function _existsOrError(bytes32 tokenId) internal view {
         if (!_exists(tokenId)) {
