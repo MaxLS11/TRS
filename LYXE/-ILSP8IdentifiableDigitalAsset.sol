@@ -9,6 +9,7 @@ import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet
 import {ILSP1UniversalReceiver} from "../LSP1UniversalReceiver/ILSP1UniversalReceiver.sol";
 import {ERC165Checker} from "../Custom/ERC165Checker.sol";
 
+
 import {_INTERFACEID_LSP1} from "../LSP1UniversalReceiver/LSP1Constants.sol";
 import "./LSP8Errors.sol";
 
@@ -18,18 +19,71 @@ import "./utils/Strings.sol";
 contract Trees is ILSP8IdentifiableDigitalAsset {
 
         using Strings for uint256;
-        
-
-
         mapping(bytes32 => address) internal _tokenOwners;
 
+    constructor(string memory name_, string memory symbol_, address newOwner_) ERC725Y(newOwner_) {
+        require(newOwner_ != address(0), "LSP4: new owner cannot be the zero address");
+    }
+
+    function totalSupply() public view override returns (uint256) {
+
+        return _existingTokens;
+    }
+
+    function balanceOf(address tokenOwner) public view override returns (uint256) {
+        return _ownedTokens[tokenOwner].length();
+    }
+
+    function tokenOwnerOf(bytes32 tokenId) public view override returns (address) {
+        address tokenOwner = _tokenOwners[tokenId];
+
+        if (tokenOwner == address(0)) {
+            revert LSP8NonExistentTokenId(tokenId);
+        }
+
+        return tokenOwner;
+    }
+
+        function tokenIdsOf(address tokenOwner) public view override returns (bytes32[] memory) {
+        return _ownedTokens[tokenOwner].values();
+    }
 
 
-    function _transfer(address from, address to, bytes32 tokenId, bool force, bytes memory data) public virtual {
+    function _transfer(address from, address to, bytes32 tokenId, bool force, bytes memory data) internal virtual {
         if (from == to) {
             revert LSP8CannotSendToSelf();
         }
-}
+    }
+
+    function _existsOrError(bytes32 tokenId) internal view {
+        if (!_exists(tokenId)) {
+            revert LSP8NonExistentTokenId(tokenId);
+        }
+    }
+
+
+    function _notifyTokenSender(address from, address to, bytes32 tokenId, bytes memory data) internal virtual {
+        if (ERC165Checker.supportsERC165Interface(from, _INTERFACEID_LSP1)) {
+            bytes memory packedData = abi.encodePacked(from, to, tokenId, data);
+            ILSP1UniversalReceiver(from).universalReceiver(_TYPEID_LSP8_TOKENSSENDER, packedData);
+        }
+    }
+
+    function _notifyTokenReceiver(address from, address to, bytes32 tokenId, bool force, bytes memory data) internal virtual {
+        if (ERC165Checker.supportsERC165Interface(to, _INTERFACEID_LSP1)) {
+        bytes memory packedData = abi.encodePacked(from, to, tokenId, data);
+        ILSP1UniversalReceiver(to).universalReceiver(_TYPEID_LSP8_TOKENSRECIPIENT, packedData);
+
+      } else if (!force) {
+            if (to.code.length != 0) {
+                revert LSP8NotifyTokenReceiverContractMissingLSP1Interface(to);
+          } else {
+                revert LSP8NotifyTokenReceiverIsEOA(to);
+            }
+        }
+    }
+
+
 
 
 
