@@ -4,7 +4,7 @@
 f = open('./metadata/typesNFT.json',) 
 data = json.load(f)
 
-IMAGES_BASE_URL = "https://gateway.pinata.cloud/ipfs/QmaxsJeWLgvX9qEW89qUR3sToUBfoky4ERbevbQCpkPxxq"
+IMAGES_BASE_URL = "https://gateway.pinata.cloud/ipfs/QmaxsJeWLgvX9qEW89qUR3sToUBfoky4ERbevbQCpkPxxq/"
 PROJECT_NAME = "Trees"
 
 def getAttribute(key, value):
