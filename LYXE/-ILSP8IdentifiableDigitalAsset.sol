@@ -20,7 +20,7 @@ contract Trees is ILSP8IdentifiableDigitalAsset {
 
         using Strings for uint256;
         mapping(bytes32 => address) internal _tokenOwners;
-
+        
     constructor(string memory name_, string memory symbol) ERC725Y() {
        
     }
