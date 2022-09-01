@@ -1,4 +1,9 @@
 
+In the priority of the further implementation of the project, it is preferable to consider the Storage Crust Network.
+https://github.com/crustio/ , 
+https://crust.network/ 
+
+
 //Generate Metadata for Image
 
 f = open('./metadata/typesNFT.json',) 
