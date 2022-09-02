@@ -8,7 +8,7 @@ import {ERC725Y} from "@erc725/smart-contracts/contracts/ERC725Y.sol";
 import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import {ILSP1UniversalReceiver} from "../LSP1UniversalReceiver/ILSP1UniversalReceiver.sol";
 import {ERC165Checker} from "../Custom/ERC165Checker.sol";
-
+import {LSP4DigitalAssetMetadata} from "Contracts/LSP4DigitalAssetMetadata/LSP4DigitalAssetMetadata.sol";
 
 import {_INTERFACEID_LSP1} from "../LSP1UniversalReceiver/LSP1Constants.sol";
 import "./LSP8Errors.sol";
@@ -16,13 +16,14 @@ import "./LSP8Errors.sol";
 import "./utils/Strings.sol";
 
 
-contract Trees is ILSP8IdentifiableDigitalAsset {
+contract Trees is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
 
         using Strings for uint256;
         mapping(bytes32 => address) internal _tokenOwners;
         
-    constructor(string memory name_, string memory symbol_)  {
-       
+    constructor(string memory name_, string memory symbol_) LSP4DigitalAssetMetadata(name_, symbol_) {
+    
+    
     }
 
     function totalSupply() public view override returns (uint256) {
