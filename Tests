@@ -12,6 +12,17 @@ https://explorer.execution.l16.lukso.network/address/0xEED9909898162AF83cf5d64ca
 
 
 September 4, 2022 test.
+
+________
+Testing NFT smart contract with secure transfer features, withdrawal features by the owner..
+
+TxHash
+https://explorer.execution.l16.lukso.network/tx/0x8618c812b6395af9fc26dd7830d4edfa5789cf78ec196aced1feb3192d2c36d6
+
+Contract address:
+https://explorer.execution.l16.lukso.network/address/0xdD253a60aA46231c1f013583039BceDF854E8D65
+
+________
 Performing various, additional tests on the Lukso blockchain (L16 testnet).
 
 
@@ -24,17 +35,7 @@ test NFT smart-contract "The Trees NFT" address:
 
 https://explorer.execution.l16.lukso.network/address/0xb027336B5cA20d4f07a92a5ea4245A6D7554B9F5/
 
-
-
-
-
-
-
-
-
-
-
-
+________
 Other tests:
 
 Description: study and continuation of work in the test network L16 (deployment others, full, NFT smart-contracts, Solidity ^0.8.1).
