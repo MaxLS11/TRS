@@ -22,3 +22,7 @@ From an economic point of view, NFTs are planned to be backed by a special Lukso
 Our video presentation:
 
 https://youtube.com/shorts/rCqpxBue5EA?feature=share
+
+
+implementation of nft on the market is planned to be performed free of charge. We plan to implement a bus-free, but with restrictions, sale, as well as to carry out the distribution of NFT Trees by the airdrop method.
+
