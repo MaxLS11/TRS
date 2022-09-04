@@ -13,7 +13,7 @@ https://explorer.execution.l16.lukso.network/address/0xEED9909898162AF83cf5d64ca
 
 September 4, 2022 test.
 Performing various, additional tests on the Lukso blockchain (L16 testnet).
-Description: study and continuation of work in the test network L16 (deployment others, full, NFT smart-contracts, Soliditi ^0.8.1).
+Description: study and continuation of work in the test network L16 (deployment others, full, NFT smart-contracts, Solidity ^0.8.1).
 
 txHash:
 https://explorer.execution.l16.lukso.network/tx/0x70c66684c834893ca12920026f3ecbf6128f262257fac344479de98ec48c53a8/
