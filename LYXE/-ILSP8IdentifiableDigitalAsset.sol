@@ -16,7 +16,7 @@ import "./LSP8Errors.sol";
 import "./utils/Strings.sol";
 
 
-contract Trees is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
+contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
 
         using Strings for uint256;
         mapping(bytes32 => address) internal _tokenOwners;
