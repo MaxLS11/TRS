@@ -21,7 +21,7 @@ contract Trees is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
         using Strings for uint256;
         mapping(bytes32 => address) internal _tokenOwners;
         
-    constructor(string memory name_, string memory symbol_) LSP4DigitalAssetMetadata(name_, symbol_) {
+    constructor() LSP4DigitalAssetMetadata("Trees", "TRS") {
     
     
     }
