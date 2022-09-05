@@ -23,8 +23,8 @@ contract TheTreesNFT is ERC721, Ownable {
     
     event _mint(address senderAddress, uint256 Trees);
 
-    constructor(string memory Trees, string memory TRS) ERC721("Trees", "TRS") {
-        setBaseURI(baseURI);
+    constructor() ERC721("Trees", "TRS") {
+        
   
     }
   
