@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 contract TheTreesNFT is ERC721, Ownable {
     address public owner;
     using Strings for uint256;
-    uint256 public constant totalSupply = 100;
+    uint256 public constant maxSupply = 100;
     uint256 public constant maxMintAmount = 3;
     string  baseTokenURI;
     mapping (uint => address) _owners;
