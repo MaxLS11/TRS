@@ -17,7 +17,7 @@ contract TheTreesNFT is ERC721, Ownable {
     string  baseTokenURI;
     mapping (uint => address) _owners;
     mapping (address => uint256[]) nftOwner;
-    mapping(address => uint) _balances;
+    mapping(address => uint256) _balances;
     uint256[] soldedTokenIds;
     uint256 public _treesPrice = 0 LYXe;
     bool public saleIsActive = true;
