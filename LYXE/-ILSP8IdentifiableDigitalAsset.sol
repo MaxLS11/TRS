@@ -14,6 +14,8 @@ import {_INTERFACEID_LSP1} from "../LSP1UniversalReceiver/LSP1Constants.sol";
 import "./LSP8Errors.sol";
 import "./utils/Strings.sol";
 import "./LSP4Constants.sol";
+import "./LSP4Errors.sol";
+
 
 contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
 
