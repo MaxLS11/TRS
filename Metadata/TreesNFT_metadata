@@ -1,7 +1,11 @@
+some images
 
-In the priority of the further implementation of the project, it is preferable to consider the Storage Crust Network.
-https://github.com/crustio/ , 
-https://crust.network/ 
+https://gateway.pinata.cloud/ipfs/QmaxsJeWLgvX9qEW89qUR3sToUBfoky4ERbevbQCpkPxxq/
+https://gateway.pinata.cloud/ipfs/QmVoLtHNDXRMuzB3jhuvVPUn8qiiGQVWBjE3F79aS6KTVW/
+https://gateway.pinata.cloud/ipfs/QmWPnUSiBwG6FrMv87X9efdhP8CDkpvFXaHv8Lj6AEBfws/
+
+
+
 
 
 //Generate Metadata for Image
@@ -31,3 +35,4 @@ for i in data:
     with open('.../metadata/' + str(token_id) + "...json", 'w') as outfile:
         json.dump(token, outfile, indent=4)
 f.close()
+
