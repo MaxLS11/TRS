@@ -1,28 +1,31 @@
 // SPDX-License-Identifier: CC0-1.0
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.5;
 
 
-import {ILSP1UniversalReceiver} from "../LSP1UniversalReceiver/ILSP1UniversalReceiver.sol";
+import {ILSP1UniversalReceiver} from "./ILSP1UniversalReceiver.sol";
 import {ILSP8IdentifiableDigitalAsset} from "./ILSP8IdentifiableDigitalAsset.sol";
-import {ERC725Y} from "@erc725/smart-contracts/contracts/ERC725Y.sol";
+//import {ERC725Y} from "@erc725/smart-contracts/contracts/ERC725Y.sol";    
 import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
-import {ILSP1UniversalReceiver} from "../LSP1UniversalReceiver/ILSP1UniversalReceiver.sol";
-import {ERC165Checker} from "../Custom/ERC165Checker.sol";
-import {LSP4DigitalAssetMetadata} from "Contracts/LSP4DigitalAssetMetadata/LSP4DigitalAssetMetadata.sol";
+import {ILSP1UniversalReceiver} from "./ILSP1UniversalReceiver.sol";
+import {ERC165Checker} from "./ERC165Checker.sol";
+import {LSP4DigitalAssetMetadata} from "./contracts/LSP4DigitalAssetMetadata/LSP4DigitalAssetMetadata.sol";
 
 import {_INTERFACEID_LSP1} from "../LSP1UniversalReceiver/LSP1Constants.sol";
 import "./LSP8Errors.sol";
-
 import "./utils/Strings.sol";
-
+import "./LSP4Constants.sol";
 
 contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
 
         using Strings for uint256;
         mapping(bytes32 => address) internal _tokenOwners;
         
-    constructor() LSP4DigitalAssetMetadata("Trees", "TRS") {
+    constructor(string memory name_, string memory symbol_) LSP4DigitalAssetMetadata("Trees", "TRS") {
     
+        super._setData(_LSP4_SUPPORTED_STANDARDS_KEY, _LSP4_SUPPORTED_STANDARDS_VALUE);
+
+        super._setData(_LSP4_TOKEN_NAME_KEY, bytes(name_));
+        super._setData(_LSP4_TOKEN_SYMBOL_KEY, bytes(symbol_));
     
     }
 
