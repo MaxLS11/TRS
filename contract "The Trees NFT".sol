@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
 contract TheTreesNFT is ERC721, Ownable {
     address public owner;
-    event ValueReceived(address sender, uint256 value);
+    event ValueReceived(address sender, uint256 amount);
     using Strings for uint256;
     uint256 public constant maxSupply = 100;
     uint256 public constant maxMintAmount = 3;
@@ -22,7 +22,7 @@ contract TheTreesNFT is ERC721, Ownable {
     uint256 public _treesPrice = 0 LYXe;
     bool public saleIsActive = true;
     
-    event _mint(address senderAddress, uint256 Trees);
+    event _mint(address sender, uint256 Trees);
 
     constructor() ERC721("Trees", "TRS") {
         
