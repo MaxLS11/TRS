@@ -14,7 +14,7 @@ contract TheTreesNFT is ERC721, Ownable {
     using Strings for uint256;
     uint256 public constant maxSupply = 100;
     uint256 public constant maxMintAmount = 3;
-    string  baseTokenURI;
+    string  baseURI;
     mapping (uint => address) _owners;
     mapping (address => uint256[]) nftOwner;
     mapping(address => uint256) _balances;
@@ -145,7 +145,10 @@ contract TheTreesNFT is ERC721, Ownable {
             emit ValueReceived(msg.sender, msg.value);
         }
         
+    function supportsInterface(bytes4 interfaceId) public view override(ERC721, ERC721Enumerable) returns (bool) {
+        return super.supportsInterface(interfaceId);
         
+    }
    
    
    
