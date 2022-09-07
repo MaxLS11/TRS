@@ -4,14 +4,13 @@ pragma solidity ^0.8.5;
 
 import {ILSP1UniversalReceiver} from "./ILSP1UniversalReceiver.sol";
 import {ILSP8IdentifiableDigitalAsset} from "./ILSP8IdentifiableDigitalAsset.sol";
-//import {ERC725Y} from "@erc725/smart-contracts/contracts/ERC725Y.sol";    
 import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import {ILSP1UniversalReceiver} from "./ILSP1UniversalReceiver.sol";
 import {ERC165Checker} from "./ERC165Checker.sol";
 import {LSP4DigitalAssetMetadata} from "./contracts/LSP4DigitalAssetMetadata/LSP4DigitalAssetMetadata.sol";
-
 import {_INTERFACEID_LSP1} from "../LSP1UniversalReceiver/LSP1Constants.sol";
 import "./LSP8Errors.sol";
+import "./LSP8Constants";
 import "./utils/Strings.sol";
 import "./LSP4Constants.sol";
 import "./LSP4Errors.sol";
@@ -21,7 +20,7 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
 
         using Strings for uint256;
         mapping(bytes32 => address) internal _tokenOwners;
-        
+        event ValueReceived(address sender, uint256 amount);
     constructor(string memory name_, string memory symbol_) LSP4DigitalAssetMetadata("Trees", "TRS") {
     
         super._setData(_LSP4_SUPPORTED_STANDARDS_KEY, _LSP4_SUPPORTED_STANDARDS_VALUE);
@@ -51,12 +50,11 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
     }
 
         function tokenIdsOf(address tokenOwner) public view override returns (bytes32[] memory) {
-        return _ownedTokens[tokenOwner].values();
+            return _ownedTokens[tokenOwner].values();
     }
 
-
-    function _transfer(address from, address to, bytes32 tokenId, bool force, bytes memory data) internal virtual {
-        if (from == to) {
+        function _transfer(address from, address to, bytes32 tokenId, bool force, bytes memory data) internal virtual {
+            if (from == to) {
             revert LSP8CannotSendToSelf();
         }
 
@@ -70,15 +68,11 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
         }
     }
     
-    
-    
-
     function _existsOrError(bytes32 tokenId) internal view {
         if (!_exists(tokenId)) {
             revert LSP8NonExistentTokenId(tokenId);
         }
     }
-
 
     function _notifyTokenSender(address from, address to, bytes32 tokenId, bytes memory data) internal virtual {
         if (ERC165Checker.supportsERC165Interface(from, _INTERFACEID_LSP1)) {
@@ -100,11 +94,9 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
             }
         }
     }
-
-
-
-      receive() external payable {
-            emit ValueReceived(msg.sender, msg.value);
+    
+    receive() external payable {
+        emit ValueReceived(msg.sender, msg.value);
         }
 
 
