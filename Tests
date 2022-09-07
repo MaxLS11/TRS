@@ -10,6 +10,16 @@ On August 28th, we launched our test smart contract on the luksoL16 test network
 
 https://explorer.execution.l16.lukso.network/address/0xEED9909898162AF83cf5d64ca10DF4f9d89300cc/
 
+September 7, 2022
+________
+Full successful deployment of The Trees NFT contract (ERC721 format);
+TxHASH:
+https://explorer.execution.l16.lukso.network/tx/0x56c26de0f74918107f7b29723742d4dd822fff4be9888d9cd431509f8db80815
+smart-ontract NFT address:
+https://explorer.execution.l16.lukso.network/address/0xC838796C49c959148E13E42346689b178Eff216B
+
+
+
 
 
 September 7, 2022 testing the basic functions of a smart contract in the Lukso L16 test network.
