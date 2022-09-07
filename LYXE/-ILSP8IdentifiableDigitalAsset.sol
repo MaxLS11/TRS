@@ -30,7 +30,7 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
         super._setData(_LSP4_TOKEN_SYMBOL_KEY, bytes(symbol_));
     
     }
-
+    
     function totalSupply() public view override returns (uint256) {
 
         return _existingTokens;
@@ -103,7 +103,9 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
 
 
 
-
+      receive() external payable {
+            emit ValueReceived(msg.sender, msg.value);
+        }
 
 
 
