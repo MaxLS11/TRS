@@ -3,9 +3,11 @@ pragma solidity ^0.8.5;
 
 
 import {ILSP1UniversalReceiver} from "./ILSP1UniversalReceiver.sol";
-import {ILSP8IdentifiableDigitalAsset} from "./ILSP8IdentifiableDigitalAsset.sol";
+import {LSP8IdentifiableDigitalAssetCore} from "./LSP8IdentifiableDigitalAsset.sol";
 import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import {ILSP1UniversalReceiver} from "./ILSP1UniversalReceiver.sol";
+import {IERC165} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+import {IERC725Y} from "@erc725/smart-contracts/contracts/interfaces/IERC725Y.sol";
 import {ERC165Checker} from "./ERC165Checker.sol";
 import {LSP4DigitalAssetMetadata} from "./contracts/LSP4DigitalAssetMetadata/LSP4DigitalAssetMetadata.sol";
 import {_INTERFACEID_LSP1} from "../LSP1UniversalReceiver/LSP1Constants.sol";
@@ -20,8 +22,9 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
 
         using Strings for uint256;
         mapping(bytes32 => address) internal _tokenOwners;
+        
         event ValueReceived(address sender, uint256 amount);
-    constructor(string memory name_, string memory symbol_) LSP4DigitalAssetMetadata("Trees", "TRS") {
+    constructor(string memory name_, string memory symbol_) LSP4DigitalAssetMetadata("The Trees NFT", "TRS") {
     
         super._setData(_LSP4_SUPPORTED_STANDARDS_KEY, _LSP4_SUPPORTED_STANDARDS_VALUE);
 
@@ -98,6 +101,13 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
     receive() external payable {
         emit ValueReceived(msg.sender, msg.value);
         }
+
+    function supportsInterface(bytes4 interfaceId) public view virtual override(IERC165, IERC725Y) returns (bool) {
+        return interfaceId == _INTERFACEID_LSP8 || super.supportsInterface(interfaceId);
+    }
+
+
+
 
 
 
