@@ -1,0 +1,29 @@
+
+{
+    LSP4Metadata: {
+        description: 'Corypha Umbraculifera',
+        links: [
+            { title: 'link website' },
+            { title: '' }
+        ],
+        images: [ 
+            [
+                {
+                    width: 4167,
+                    height: 4167,
+                    hashFunction: 'keccak256(bytes)',
+                    hash: 'string',
+                    url: 'ipfs/QmaxsJeWLgvX9qEW89qUR3sToUBfoky4ERbevbQCpkPxxq'
+                }, 
+
+            ],
+
+        ],
+
+            hashFunction: 'keccak256(bytes)',
+            hash: 'string',
+            url: 'string',
+            fileType: 'string'
+        }]  
+    }
+}
