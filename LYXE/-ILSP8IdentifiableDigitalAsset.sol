@@ -58,12 +58,12 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
 
         function _transfer(address from, address to, bytes32 tokenId, bool force, bytes memory data) internal virtual {
             if (from == to) {
-            revert LSP8CannotSendToSelf();
+                revert LSP8CannotSendToSelf();
         }
 
         address tokenOwner = tokenOwnerOf(tokenId);
-        if (tokenOwner != from) {
-            revert LSP8NotTokenOwner(tokenOwner, tokenId, from);
+            if (tokenOwner != from) {
+                revert LSP8NotTokenOwner(tokenOwner, tokenId, from);
         }
 
         if (to == address(0)) {
@@ -71,6 +71,10 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
         }
     }
     
+    function _exists(bytes32 tokenId) internal view virtual returns (bool) {
+        return _tokenOwners[tokenId] != address(0);
+    }
+
     function _existsOrError(bytes32 tokenId) internal view {
         if (!_exists(tokenId)) {
             revert LSP8NonExistentTokenId(tokenId);
@@ -80,14 +84,14 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
     function _notifyTokenSender(address from, address to, bytes32 tokenId, bytes memory data) internal virtual {
         if (ERC165Checker.supportsERC165Interface(from, _INTERFACEID_LSP1)) {
             bytes memory packedData = abi.encodePacked(from, to, tokenId, data);
-            ILSP1UniversalReceiver(from).universalReceiver(_TYPEID_LSP8_TOKENSSENDER, packedData);
+                ILSP1UniversalReceiver(from).universalReceiver(_TYPEID_LSP8_TOKENSSENDER, packedData);
         }
     }
 
     function _notifyTokenReceiver(address from, address to, bytes32 tokenId, bool force, bytes memory data) internal virtual {
         if (ERC165Checker.supportsERC165Interface(to, _INTERFACEID_LSP1)) {
-        bytes memory packedData = abi.encodePacked(from, to, tokenId, data);
-        ILSP1UniversalReceiver(to).universalReceiver(_TYPEID_LSP8_TOKENSRECIPIENT, packedData);
+            bytes memory packedData = abi.encodePacked(from, to, tokenId, data);
+                ILSP1UniversalReceiver(to).universalReceiver(_TYPEID_LSP8_TOKENSRECIPIENT, packedData);
 
       } else if (!force) {
             if (to.code.length != 0) {
@@ -100,7 +104,7 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
     
     receive() external payable {
         emit ValueReceived(msg.sender, msg.value);
-        }
+    }
 
     function supportsInterface(bytes4 interfaceId) public view virtual override(IERC165, IERC725Y) returns (bool) {
         return interfaceId == _INTERFACEID_LSP8 || super.supportsInterface(interfaceId);
