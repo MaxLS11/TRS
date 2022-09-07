@@ -10,7 +10,7 @@ import {ERC165Checker} from "./ERC165Checker.sol";
 import {LSP4DigitalAssetMetadata} from "./contracts/LSP4DigitalAssetMetadata/LSP4DigitalAssetMetadata.sol";
 import {_INTERFACEID_LSP1} from "../LSP1UniversalReceiver/LSP1Constants.sol";
 import "./LSP8Errors.sol";
-import "./LSP8Constants";
+import "./LSP8Constants.sol";
 import "./utils/Strings.sol";
 import "./LSP4Constants.sol";
 import "./LSP4Errors.sol";
