@@ -52,11 +52,11 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
         return tokenOwner;
     }
 
-        function tokenIdsOf(address tokenOwner) public view override returns (bytes32[] memory) {
+    function tokenIdsOf(address tokenOwner) public view override returns (bytes32[] memory) {
             return _ownedTokens[tokenOwner].values();
     }
 
-        function _transfer(address from, address to, bytes32 tokenId, bool force, bytes memory data) internal virtual {
+    function _transfer(address from, address to, bytes32 tokenId, bool force, bytes memory data) internal virtual {
             if (from == to) {
                 revert LSP8CannotSendToSelf();
         }
