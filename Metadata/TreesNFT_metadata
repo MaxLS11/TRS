@@ -32,7 +32,7 @@ for i in data:
     token["attributes"].append(getAttribute("Color", i["Color"]))
 
 
-    with open('.../metadata/' + str(token_id) + "...json", 'w') as outfile:
+    with open('.../metadata/' + str(token_id) + ".json", 'w') as outfile:
         json.dump(token, outfile, indent=4)
 f.close()
 
