@@ -1,12 +1,12 @@
-// SPDX-License-Identifier: GPL-3.0
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.5;
-
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
 
-    contract TreesNFT is ERC721Enumerable, Ownable {
+    contract TreesNFT is ERC721, ERC721Enumerable, Ownable {
 
 
         using Strings for uint256;
@@ -21,7 +21,7 @@ import "@openzeppelin/contracts/utils/Strings.sol";
         mapping(address => uint256) public addressMintedBalance;
         event ValueReceived(address sender, uint256 amount);
 
-      constructor(string memory _name, string memory _symbol, string memory _initBaseURI, string memory _initNotRevealedUri) ERC721("TreesNFT", "TRS") {
+      constructor(string memory _name, string memory _symbol, string memory _initBaseURI, string memory _initNotRevealedUri) ERC721(_name, _symbol) {
             setBaseURI(_initBaseURI);
             setNotRevealedURI(_initNotRevealedUri);
   }
@@ -29,6 +29,14 @@ import "@openzeppelin/contracts/utils/Strings.sol";
         receive() external payable {
             emit ValueReceived(msg.sender, msg.value);
     }
+
+
+
+   function supportsInterface(bytes4 interfaceId) public view override(ERC721, ERC721Enumerable)returns (bool){
+   
+        return super.supportsInterface(interfaceId);
+    }
+
 
   function mint(uint256 _mintAmount) public payable {
   
@@ -104,6 +112,12 @@ import "@openzeppelin/contracts/utils/Strings.sol";
     function _baseURI() internal view virtual override returns (string memory) {
         return baseURI;
   }
+  
+    function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal
+        override(ERC721, ERC721Enumerable)
+    {
+    super._beforeTokenTransfer(from, to, tokenId);
+    }
 
     function withdraw() public payable onlyOwner {
 
@@ -111,4 +125,7 @@ import "@openzeppelin/contracts/utils/Strings.sol";
             require(os);
    
   }
+
+
+  
 }
