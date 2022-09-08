@@ -33,6 +33,22 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
     
     }
     
+    
+    function _setData(bytes32 dataKey, bytes memory dataValue) internal virtual override {
+        if (dataKey == _LSP4_TOKEN_NAME_KEY) {
+            revert LSP4TokenNameNotEditable();
+        } else if (dataKey == _LSP4_TOKEN_SYMBOL_KEY) {
+            revert LSP4TokenSymbolNotEditable();
+        } else {
+            store[dataKey] = dataValue;
+            emit DataChanged(
+                dataKey,
+                dataValue.length <= 256 ? dataValue : BytesLib.slice(dataValue, 0, 256)
+            );
+        }
+    }
+    
+    
     function totalSupply() public view override returns (uint256) {
 
         return _existingTokens;
