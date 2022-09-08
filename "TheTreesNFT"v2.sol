@@ -48,9 +48,9 @@ import "@openzeppelin/contracts/utils/Strings.sol";
            require(msg.value >= _treesPrice * _mintAmount, "insufficient funds");
     }
 
-    for (uint256 i = 1; i <= _mintAmount; i++) {
-      addressMintedBalance[msg.sender]++;
-      _safeMint(msg.sender, supply + i);
+           for (uint256 i = 1; i <= _mintAmount; i++) {
+           addressMintedBalance[msg.sender]++;
+           _safeMint(msg.sender, supply + i);
     }
   }
   
