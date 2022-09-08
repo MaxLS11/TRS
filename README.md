@@ -26,3 +26,5 @@ https://youtube.com/shorts/rCqpxBue5EA?feature=share
 
 implementation of nft on the market is planned to be performed free of charge. We plan to implement a bus-free, but with restrictions, sale, as well as to carry out the distribution of NFT Trees by the airdrop method.
 
+Functions LSP8-IdentifiableDigitalAsset will easily help us realize 10 special tokens, in collection.
+
