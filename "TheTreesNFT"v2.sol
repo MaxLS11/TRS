@@ -30,25 +30,22 @@ import "@openzeppelin/contracts/utils/Strings.sol";
             emit ValueReceived(msg.sender, msg.value);
     }
 
-
-
    function supportsInterface(bytes4 interfaceId) public view override(ERC721, ERC721Enumerable)returns (bool){
    
         return super.supportsInterface(interfaceId);
     }
 
-
-  function mint(uint256 _mintAmount) public payable {
+   function mint(uint256 _mintAmount) public payable {
   
-    uint256 supply = totalSupply();
-    require(_mintAmount > 0, "need to mint at least 1 TreesNFT");
-    require(_mintAmount <= maxMintAmount, "max mint amount per session exceeded");
-    require(supply + _mintAmount <= maxSupply, "max NFT limit exceeded");
+       uint256 supply = totalSupply();
+       require(_mintAmount > 0, "need to mint at least 1 TreesNFT");
+       require(_mintAmount <= maxMintAmount, "max mint amount per session exceeded");
+       require(supply + _mintAmount <= maxSupply, "max NFT limit exceeded");
 
-    if (msg.sender != owner()) {
-            uint256 ownerMintedCount = addressMintedBalance[msg.sender];
-            require(ownerMintedCount + _mintAmount <= nftPerAddressLimit, "max NFT per address exceeded");
-            require(msg.value >= _treesPrice * _mintAmount, "insufficient funds");
+           if (msg.sender != owner()) {
+           uint256 ownerMintedCount = addressMintedBalance[msg.sender];
+           require(ownerMintedCount + _mintAmount <= nftPerAddressLimit, "max NFT per address exceeded");
+           require(msg.value >= _treesPrice * _mintAmount, "insufficient funds");
     }
 
     for (uint256 i = 1; i <= _mintAmount; i++) {
