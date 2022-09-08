@@ -30,6 +30,7 @@ for i in data:
         "attributes": []
     }
     token["attributes"].append(getAttribute("Color", i["Color"]))
+    token["attributes"].append(getAttribute("Type", i["Type"]))
 
 
     with open('.../metadata/' + str(token_id) + ".json", 'w') as outfile:
