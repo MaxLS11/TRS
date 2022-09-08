@@ -118,6 +118,31 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
         }
     }
     
+    
+    function _mint(address to, bytes32 tokenId, bool force, bytes memory data) public payable virtual {
+        if (to == address(0)) {
+            revert LSP8CannotSendToAddressZero();
+        }
+
+        if (_exists(tokenId)) {
+            revert LSP8TokenIdAlreadyMinted(tokenId);
+        }
+
+        _beforeTokenTransfer(address(0), to, tokenId);
+
+        _ownedTokens[to].add(tokenId);
+        _tokenOwners[tokenId] = to;
+
+        emit Transfer( address(0), to, tokenId, force, data);
+
+        _notifyTokenReceiver(address(0), to, tokenId, force, data);
+    }
+    
+    
+    
+    
+    
+    
     receive() external payable {
         emit ValueReceived(msg.sender, msg.value);
     }
@@ -128,7 +153,7 @@ contract TreesNFT is ILSP8IdentifiableDigitalAsset, LSP4DigitalAssetMetadata {
 
 
 
-
+ 
 
 
 }
