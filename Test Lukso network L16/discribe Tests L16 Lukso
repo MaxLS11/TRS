@@ -1,0 +1,73 @@
+
+//Solidity Smart contract testing is done using Hardhat, Lukso Network;
+
+Lukso testnet address performing tests(owner):
+
+https://explorer.execution.l16.lukso.network/address/0xB2518518259BF47C632fB9331e6D1ED447b3D1E5/
+
+________
+On August 28th, we launched our test smart contract on the luksoL16 test network.
+
+https://explorer.execution.l16.lukso.network/address/0xEED9909898162AF83cf5d64ca10DF4f9d89300cc/
+
+
+
+September 8, 2022
+________
+
+Testing a smart contract on the Lukso L16 test network with the "Airdrop" function:
+TxHash:
+https://explorer.execution.l16.lukso.network/tx/0x91a2246474a79fd5148fd53db2b74f15a36bd3325ace054dd133668aed443611
+Address contract:
+https://explorer.execution.l16.lukso.network/address/0x328A0D29598A75784a6D652E7285a8Ed0515cdE8
+
+September 7, 2022
+________
+Full successful deployment of The Trees NFT contract (ERC721 format);
+TxHASH:
+https://explorer.execution.l16.lukso.network/tx/0x56c26de0f74918107f7b29723742d4dd822fff4be9888d9cd431509f8db80815
+smart-ontract NFT address:
+https://explorer.execution.l16.lukso.network/address/0xC838796C49c959148E13E42346689b178Eff216B
+
+September 7, 2022 testing the basic functions of a smart contract in the Lukso L16 test network.
+________
+https://explorer.execution.l16.lukso.network/address/0x4EE85df8363171cc88064a6e88bfd709F94873e2
+++ NFT smart contract balance.
+
+TxHash test transaction:
+https://explorer.execution.l16.lukso.network/tx/0xdd53ca910c93a79b7d1a8a696129378986bdc992b07961c2f8eaf3d6cffaa55f
+
+September 4, 2022 test.
+
+________
+Testing NFT smart contract with secure transfer features, withdrawal features by the owner..
+
+TxHash
+https://explorer.execution.l16.lukso.network/tx/0x8618c812b6395af9fc26dd7830d4edfa5789cf78ec196aced1feb3192d2c36d6
+
+Contract address:
+https://explorer.execution.l16.lukso.network/address/0xdD253a60aA46231c1f013583039BceDF854E8D65
+
+________
+Performing various, additional tests on the Lukso blockchain (L16 testnet).
+
+
+Testing of Trees smart-contract, format ERC721, Solidity 0.8.1
+
+thHash:
+https://explorer.execution.l16.lukso.network/tx/0xd292e6be16e12cbed381c4dfb9065ff11b49870144192dbeccecb0391da1b302/
+
+test NFT smart-contract "The Trees NFT" address: 
+
+https://explorer.execution.l16.lukso.network/address/0xb027336B5cA20d4f07a92a5ea4245A6D7554B9F5/
+
+________
+Other tests:
+
+Description: study and continuation of work in the test network L16 (deployment others, full, NFT smart-contracts, Solidity ^0.8.1).
+
+txHash:
+https://explorer.execution.l16.lukso.network/tx/0x70c66684c834893ca12920026f3ecbf6128f262257fac344479de98ec48c53a8/
+
+test smart-contract address:
+https://explorer.execution.l16.lukso.network/address/0x01B3C44877423b7e5e37F121910FB4c5992F109d/
