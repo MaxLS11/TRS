@@ -1,0 +1,29 @@
+[
+   
+  {
+   "color": "Blue"
+  "type": "Corypha Umbraculifera"
+   "tokenId": 0
+}, 
+
+  {
+   "color": "Violet"
+  "type": "Araucaria Andustifolia"
+   "tokenId": 1
+}, 
+
+  {
+   "color": "Orange"
+  "type": "Adansonia Grandidieri"
+   "tokenId": 2
+}, 
+
+  {
+   "color": "Green"
+  "type": "Winter Tree"
+   "tokenId": 3
+}, 
+
+]
+
+//Initial description of nft for testing.
